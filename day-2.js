@@ -157,4 +157,4 @@ function main() {
 // 3. TERNARY OPERATOR SCRIPT: Write a script that uses the ternary operator to determine if a number is positive or negative and logs the result.
 
 
-// =========******** Achievment *******==========
+// =========******** Achievement *******==========
