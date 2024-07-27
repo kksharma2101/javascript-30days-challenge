@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px;">
+     <!-- Dom Manipulation -->
+
+ <!-- ========== Activity-1: Selecting and Manipulating Elements =========== -->
+    <!-- Task-1: Select an HTML element by its ID and change its text content. -->
+    <!-- Task-2: Select an HTML element by its class and change its background color. -->
+
+    <div id="change-text" style="padding: 10px;">This is the old content</div>
+    <button onclick="changeContent()">Change</button>
+
+ <!-- ========== Activity-2: Creating and appending elements =========== -->
+
+    <!-- Task-3: Create a new "div" element with some text content and append it to the body. -->
+
+    <!-- <div class="other-text">There is has some text content in this part</div> -->
+     <ul class="add-li">List</ul>
+     <button onclick="addClass()">Add Class</button>
+     <button onclick="removeClass()">Remove Class</button>
+ 
+ <!-- ========== Activity-3: Removing elements =========== -->
+   
+    <!-- Task-5: Select an HTML element and remove it from the DOM. -->
+    <!-- Task-6: Remove the last child of a specific HTML elements. -->
+
+ <!-- ========== Activity-3: Modifying Attributes and classes =========== -->
+
+    <!-- Task-7: Select an HTML element and change one of its attributes ('src' of an "img" tag). -->
+    <img id="myImage" src="original_image.jpg" alt="Original Image">
+    <button onclick="changeImageSource()">Change Image Source</button>
+
+    <!-- Task-8: Add and remove a CSS class to/from an HTML element. -->
+
+</body>
+<script>
+    let changeText = document.getElementById("change-text");
+    let addLi = document.querySelector(".add-li");
+
+    function changeContent() {
+    // Task-3: Create a new "div" element with some text content and append it to the body.
+        let newDiv = document.createElement("div");
+
+        changeText.innerText = "This is the new content";
+        newDiv.textContent = "This is the other div creating by JS";
+        changeText.appendChild(newDiv); //Create a new "div" element with some text content and append it to the body.
+        changeText.removeChild(newDiv) // Task-5: Select an HTML element and remove it from the DOM.
+        changeText.style.backgroundColor="green";
+    }
+
+    // Task-4: Create a new "li" element and add it to an exiting "ul" list.
+        let newLiElement = document.createElement("li");
+        addLi.appendChild(newLiElement).innerHTML = "hello"
+        addLi.removeChild(newLiElement) // Remove the last child of a specific HTML elements.
+// 
+    function changeImageSource() {
+            // Select the image element by its ID
+            var image = document.getElementById("myImage");
+            // Change its src attribute
+            image.setAttribute("src", "new_image.jpg");
+        }
+
+    function addClass() {
+        addLi.classList.add("red")
+        addLi.style.backgroundColor = "Red"
+    }
+
+    function removeClass() {
+        addLi.classList.remove("red")
+        addLi.style.backgroundColor = "blue"
+    }
+
+</script>
+</html>
