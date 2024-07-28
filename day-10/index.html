@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body
+    style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px;">
+
+    <!-- // Event Handling
+
+// ========= Activity-1: Basic Event Handling ==========
+
+// Task-1: Add a click event lisener to a button that changes the text content of a paragraph. -->
+
+    <p id="textParagraph">This is the original text.</p>
+    <button id="changeTextButton">Click me to change text</button>
+
+    <!-- Task-2: Add a double-click event listener to an image that toggle it's visibility. -->
+    <img src="https://th.bing.com/th/id/OIP.vggFhcDaZAZ0BLI1MKgUzgHaD-?rs=1&pid=ImgDetMain" alt="nature"
+        id="double-click">
+    <button id="toggle">double click to toggle image</button>
+
+    <!-- ========= Activity-2: Mouse Events ========== -->
+
+    <!-- Task-3: Add a mouseover event listener to an element that changes its background color. -->
+
+    <!-- ========= Activity-3: Keyboards Events ========== -->
+
+    <!-- Task-5: Add keydown event listener to an input field that logs the key pressed to the console. -->
+    <input type="text" id="keydown" placeholder="key print in console">
+
+    <!-- Task-6: Add keyup event listener to an input field that displays the current value in a paragraph. -->
+    <p id="keyup-para"></p>
+    <input type="text" id="keyup">
+
+    <!-- ========= Activity-4: Form Events ========== -->
+
+    <!-- Task-7: Add a submit event listener to a form prevents the default submission and logs the form data to the console. -->
+    <form id="dataForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="text">Email:</label>
+        <input type="text" id="email" name="email">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Task-8: Add a change event listener to a select dropdown that displays the selected value in a paragraph. -->
+    <label for="">choose an option:</label>
+    <select id="options">
+        <option value="Please select"></option>
+        <option value="Option 1">Option-1</option>
+        <option value="Option 2">Option-2</option>
+        <option value="Option 3">Option-3</option>
+    </select>
+    <p id="display-option">Pleaase Select: </p>
+
+    <!-- ========= Activity-5: Event Deligation ========== -->
+
+    <!-- Task-9: Add a click event listener to a list that logs the text content of the clicked list item using event deligation. -->
+    <ul id="list">
+        <li>Home</li>
+        <li>Contact</li>
+        <li>About</li>
+        <li>Register</li>
+        <li>Payment</li>
+    </ul>
+
+    <!-- Task-9: Add an event listener to a parent element that listens for events from dynamically added child elements. -->
+    <button id="add-element">Add</button>
+    <ul id="list-item"></ul>
+
+    <script>
+        const button = document.getElementById('changeTextButton');
+        const paragraph = document.getElementById('textParagraph');
+        const toggleImg = document.getElementById("double-click")
+        const toggle = document.getElementById("toggle");
+        const keydown = document.getElementById("keydown");
+        const keyup = document.getElementById("keyup");
+        const submitForm = document.getElementById("dataForm")
+        const option = document.getElementById("options")
+        const displayOption = document.getElementById("display-option")
+        const list = document.getElementById("list");
+        const addEle = document.getElementById("add-element")
+
+        button.addEventListener('click', function () {
+            paragraph.textContent = 'This is the new text!';
+        });
+
+        toggle.addEventListener('dblclick', function () {
+            if (toggleImg.style.display == "none") {
+                toggleImg.style.display = "block"
+            } else {
+                toggleImg.style.display = "none"
+            }
+        })
+
+        // Task-3: Add a mouseover event listener
+        paragraph.addEventListener('mouseover', function () {
+            paragraph.style.backgroundColor = "green"
+        })
+
+        // Task-4: Add a mouseout event listener
+        paragraph.addEventListener('mouseout', function () {
+            paragraph.style.backgroundColor = "white"
+        })
+
+        // Task-5: Add keydown event listener
+        keydown.addEventListener('keydown', function (e) {
+            console.log(e.key)
+        })
+
+        // Task-6: Add keyup event listener
+        keyup.addEventListener('keyup', function (e) {
+            document.getElementById('keyup-para').textContent = e.target.value
+        })
+
+        // Task-7: Add submit event listener
+        submitForm.addEventListener('submit', function (e) {
+            e.preventDefault()
+            const formData = new FormData(submitForm);
+
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+        })
+
+        // Task-8: Add change event listener
+        option.addEventListener('change', function () {
+            displayOption.textContent = `You choose: ${option.value}`
+        })
+
+        // Task-9: Add a click event listener to a list
+        list.addEventListener('click', function (event) {
+            console.log(event.target.textContent)
+        });
+
+        // Task-10: Add an event listener to a parent element
+        addEle.addEventListener("click", function () {
+            let liTag = document.createElement('li')
+            document.getElementById("list-item").appendChild(liTag).textContent = "New Element"
+        })
+
+    </script>
+
+</body>
+
+</html>
