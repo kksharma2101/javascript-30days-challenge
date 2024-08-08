@@ -134,5 +134,55 @@ async function fetchAsyncData(url) {
 // ========== Activity-5: Concurrent Promises ===========
 
 // Task-8: Use Promise.all to wait for multiple promises to resolve and then log all their values.
+let allPromise = Promise.all([
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("3 second");
+    }, 3000);
+  }),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject("4 second");
+    }, 4000);
+  }),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("1 second");
+    }, 1000);
+  }),
+]);
+
+// allPromise
+//   .then((data) => {
+//     console.warn("Promise resolve successfully", data);
+//   })
+//   .catch((err) => {
+//     console.warn("Catch block", err);
+//   });
 
 // Task-9: Use Promise.race to log the value of the first promise that resolves among multiple promises.
+let racePromise = Promise.race([
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("3 second");
+    }, 3000);
+  }),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("4 second");
+    }, 4000);
+  }),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("1 second");
+    }, 1000);
+  }),
+]);
+
+racePromise
+  .then((data) => {
+    console.warn("Promise resolve successfully", data);
+  })
+  .catch((err) => {
+    console.warn("Catch block", err);
+  });
